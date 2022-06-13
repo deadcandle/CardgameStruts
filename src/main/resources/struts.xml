@@ -5,12 +5,6 @@
 <struts>
 	<constant name="struts.devMode" value="true"/>
 	<package name="default" extends="struts-default" namespace="/">
-		<action name="welcome" class="prg.Welcome">
-			<result name="success">/WEB-INF/content/calculator.jsp</result>
-		</action>
-		<action name="calculator" class="prg.Calculate">
-			<result name="success">/WEB-INF/content/calculator.jsp</result>
-		</action>
 		<action name="cardgame" class="prg.Cardgame">
 			<result name="success">/WEB-INF/content/calculator.jsp</result>
 		</action>
