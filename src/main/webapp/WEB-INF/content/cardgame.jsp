@@ -7,5 +7,11 @@
     <%@ taglib prefix="s" uri="/struts-tags"%>
 </head>
 <body>
+    <s:form action="calculator" method="post">
+        <s:submit name="higher" value="hoger"></s:submit>
+    </s:form>
+    <s:form action="calculator" method="post">
+        <s:submit name="lower" value="lager"></s:submit>
+    </s:form>
 </body>
 </html>
