@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Kaart: <kbd>${beginKaart}</kbd></h1>
-    <s:form action="calculator" method="post">
+    <s:form action="cardgame" method="post">
         <s:submit name="higher" value="hoger"></s:submit>
     </s:form>
-    <s:form action="calculator" method="post">
+    <s:form action="cardgame" method="post">
         <s:submit name="lower" value="lager"></s:submit>
     </s:form>
 </body>
