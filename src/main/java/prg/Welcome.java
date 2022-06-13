@@ -6,8 +6,6 @@ public class Welcome extends ActionSupport {
 
     private String output;
     public String execute() {
-        if (input.equalsIgnoreCase("higher")) {
-        }
         return SUCCESS;
     }
 
