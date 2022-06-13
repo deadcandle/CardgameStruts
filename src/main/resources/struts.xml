@@ -5,7 +5,7 @@
 <struts>
 	<constant name="struts.devMode" value="true"/>
 	<package name="default" extends="struts-default" namespace="/">
-		<action name="cardgame" class="prg.Cardgame">
+		<action name="cardgame" class="prg.Welcome">
 			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 		</action>
 	</package>
