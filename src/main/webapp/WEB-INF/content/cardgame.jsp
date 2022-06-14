@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color:#1b1b1b;">
+<html lang="en" style="background-color:white;">
 <head>
     <meta charset="UTF-8">
     <title>Calculator | Struts2Calculator</title>
@@ -7,10 +7,11 @@
     <%@ taglib prefix="s" uri="/struts-tags"%>
 </head>
 <body>
-    <s:form action="calculator" method="post">
+    <h1>Kaart: <kbd>${beginKaart}</kbd></h1>
+    <s:form action="cardgame" method="post">
         <s:submit name="higher" value="hoger"></s:submit>
     </s:form>
-    <s:form action="calculator" method="post">
+    <s:form action="cardgame" method="post">
         <s:submit name="lower" value="lager"></s:submit>
     </s:form>
 </body>
