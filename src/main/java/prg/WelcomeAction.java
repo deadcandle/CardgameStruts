@@ -1,54 +1,87 @@
 package prg;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
-import javax.smartcardio.Card;
+import java.util.Map;
 
-public class WelcomeAction extends ActionSupport {
+public class WelcomeAction extends ActionSupport implements SessionAware {
 
-    private static int score;
-    private static Card currentCard;
-    private static Card nextCard;
-    private static Deck deck;
+    private Map<String, Object> session;
+
+    private int score;
+    private Card currentCard;
+    private Card nextCard;
+    private Deck deck;
 
     public String execute() {
-
-        if (currentCard == null) {
-
+        if (!session.containsKey("deck")) {
+            session.put("deck", new Deck());
+            setSession();
         }
+        currentCard = deck.getNextCard();
+        gameTurn();
 
         return SUCCESS;
     }
 
-    public static int getScore() {
+    public void gameTurn() {
+        nextCard = deck.getNextCard();
+        // laat currentCard zien aan de gebruiker
+        // vraag hoger of lager
+        if (keuze_is_hoger && currentCard.isHigherOrEqual(nextCard)) {
+            correct();
+        } else {
+            gameOver();
+        }
+    }
+
+    public void correct() {
+        score++;
+        currentCard = nextCard;
+        // laat currentscore en cardsLeft(int) zien aan de gebruiker
+        gameTurn();
+    }
+
+    public void gameOver() {
+        // laat zien wat de volgende card was, wat de score is, en hoeveel kaarten de speler nog over had
+    }
+
+    public int getScore() {
         return score;
     }
 
-    public static void setScore(int score) {
-        WelcomeAction.score = score;
+    public void setScore(int score) {
+        this.score = score;
     }
 
-    public static Card getCurrentCard() {
+    public Card getCurrentCard() {
         return currentCard;
     }
 
-    public static void setCurrentCard(Card currentCard) {
-        WelcomeAction.currentCard = currentCard;
+    public void setCurrentCard(Card currentCard) {
+        this.currentCard = currentCard;
     }
 
-    public static Card getNextCard() {
+    public Card getNextCard() {
         return nextCard;
     }
 
-    public static void setNextCard(Card nextCard) {
-        WelcomeAction.nextCard = nextCard;
+    public void setNextCard(Card nextCard) {
+        this.nextCard = nextCard;
     }
 
-    public static Deck getDeck() {
+    public Deck getDeck() {
         return deck;
     }
 
-    public static void setDeck(Deck deck) {
-        WelcomeAction.deck = deck;
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+
     }
 }

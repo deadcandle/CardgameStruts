@@ -4,56 +4,38 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-
     private ArrayList<Card> cards = new ArrayList<>();
 
     public Deck() {
         for (int i = 0; i < 4; i++) {
-
-            String suit = "niks";
-            switch (i) {
-                case 0:
-                    suit = "Harten";
-                    break;
-                case 1:
-                    suit = "Ruiten";
-                    break;
-                case 2:
-                    suit = "Schoppen";
-                    break;
-                case 3:
-                    suit = "Klaver";
-                    break;
-            }
-
             for (int j = 2; j <= 10; j++) {
-                Card c = new Card(suit, " " + j, j);
-                cards.add(c);
+                switch (i) {
+                    case 0 : {Card c = new Card("Clubs",j +" of Clubs",j); cards.add(c); break;}
+                    case 1 : {Card c = new Card("Diamonds",j+" of Diamonds",j); cards.add(c); break;}
+                    case 2 : {Card c = new Card("Hearts",j+" of Hearts",j); cards.add(c); break;}
+                    case 3 : {Card c = new Card("Spades",j+" of Spades",j); cards.add(c); break;}
+                }
             }
+            Card jack = new Card("Jack", "Jack", 10);
+            Card queen = new Card("Queen", "Queen", 11);
+            Card king = new Card("King", "King", 12);
+            Card ace = new Card("Ace", "Ace", 13);
 
-            Card boer = new Card(suit, "Boer "  + 11,  11);
-            Card vrouw = new Card(suit, "Vrouw " + 12, 12);
-            Card koning = new Card(suit, "Koning " + 13, 13);
-            Card aas = new Card(suit, "Aas " + 14, 14);
-
-            cards.add(boer);
-            cards.add(vrouw);
-            cards.add(koning);
-            cards.add(aas);
+            cards.add(jack);
+            cards.add(queen);
+            cards.add(king);
+            cards.add(ace);
         }
-
         Collections.shuffle(cards);
+        System.out.println("cards: " + cards.size());
     }
 
     public Card getNextCard() {
-        int next = 0;
-        Card nextCard = cards.remove(next);
-        return nextCard;
+        cards.remove(0);
+        return cards.get(0);
     }
 
     public ArrayList<Card> getCards() {
         return cards;
-
     }
-
 }
