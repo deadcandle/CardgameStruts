@@ -8,12 +8,13 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-    <h1>Kaart: <kbd>${currentCard}</kbd></h1>
+    <h1>Current card: <kbd>${currentCard}</kbd></h1>
+    <h1>Next card: <kbd>${nextCard}</kbd></h1>
     <s:form action="cardgameChooseHigher" method="post">
-        <s:submit name="higher" value="hoger"></s:submit>
+        <s:submit></s:submit>
     </s:form>
     <s:form action="cardgameChooseLower" method="post">
-        <s:submit name="lower" value="lager"></s:submit>
+        <s:submit></s:submit>
     </s:form>
     <c:if test="true">rng is true</c:if>
 </body>

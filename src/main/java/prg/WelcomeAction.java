@@ -55,11 +55,13 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
 
     public String chooseHigher() {
         choseHigher = true;
+        System.out.println("choose higher");
         return SUCCESS;
     }
 
     public String chooseLower() {
         choseHigher = false;
+        System.out.println("choose lower");
         return SUCCESS;
     }
 
