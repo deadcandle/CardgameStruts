@@ -13,8 +13,8 @@
         <select>
             
         </select>
-        <s:submit name="higher" value="hoger"></s:submit>
-        <s:submit name="lower" value="lager"></s:submit>
+        <s:submit name="higher" value="true"></s:submit>
+        <s:submit name="lower" value="false"></s:submit>
     </s:form>
     <c:if test="true">rng is true</c:if>
 </body>
