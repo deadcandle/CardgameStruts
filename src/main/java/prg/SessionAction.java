@@ -12,18 +12,15 @@ public class SessionAction extends ActionSupport implements SessionAware {
 
     public String execute() {
         addUserToSession();
-        if(session.containsKey("user")){
+        if(session.containsKey("user") && session.containsKey("user2")){
             user = (User) session.get("user");
         }
-
-
         return SUCCESS;
     }
     public String addUserToSession() {
-        User user = new User("hibernate user 🗿", 20);
+        User user = new User("gino palo the 🐐", 20);
         session.put("user", user);
         return SUCCESS;
-
     }
     @Override
     public void setSession(Map<String, Object> session) {

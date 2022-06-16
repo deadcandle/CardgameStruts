@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>responsie opdracht</title>
+
+    <title>hibernate user 🗿</title>
 </head>
 <body style="color: white; background: black">
 <h1 style="font-size: 500%;">
