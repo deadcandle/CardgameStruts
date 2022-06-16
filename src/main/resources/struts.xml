@@ -8,9 +8,6 @@
 		<action name="cardgame" class="prg.WelcomeAction">
 			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 		</action>
-		<action name="SessionAcction" class="prg.SessionAction" method="execute">
-			<result name="success">/WEB-INF/content/Session.jsp</result>
-		</action>
 		<action name="cardgameChooseHigher" class="prg.WelcomeAction" method="chooseHigher">
 			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 		</action>
