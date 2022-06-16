@@ -1,7 +1,9 @@
 package prg;
 
 import com.opensymphony.xwork2.ActionSupport;
-import prg.game.*;
+
+import javax.smartcardio.Card;
+
 public class WelcomeAction extends ActionSupport {
 
     private static int score;
