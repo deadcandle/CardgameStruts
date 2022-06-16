@@ -34,7 +34,6 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
 
     public void gameTurn() {
         nextCard = deck.getNextCard();
-        // laat currentCard zien aan de gebruiker
         if (choseHigher && currentCard.isHigherOrEqual(nextCard)) {
             correct();
         } else {
