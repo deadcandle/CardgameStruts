@@ -40,12 +40,12 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     }
 
     public void gameTurn() {
-        nextCard = deck.getNextCard();
-        print("next card: " + nextCard.getValue());
         if (choice != null) {
+            nextCard = deck.getNextCard();
+            print("next card: " + nextCard.getValue());
             if (choice.equals("higher") && currentCard.isHigherOrEqual(nextCard)) {
                 correct();
-            } else if (choice.equals("lower") && !(currentCard.isHigherOrEqual(nextCard))) {
+            } else if (choice.equals("lower") && !currentCard.isHigherOrEqual(nextCard)) {
                 correct();
             } else {
                 gameOver();
@@ -62,7 +62,7 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     }
 
     public void gameOver() {
-        print("game over - score: " + score + " - cards left: " + deck.getCards().size());
+        print("game over");
     }
 
     public String getChoice() {

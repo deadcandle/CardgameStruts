@@ -8,7 +8,8 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-    <h1>Kaart: <kbd>${currentCard}</kbd></h1>
+    <h1>Huidige Kaart: <kbd>${currentCard}</kbd></h1>
+    <h1>Volgende Kaart: <kbd>${nextCard}</kbd></h1>
     <h3>Score: <kbd>${score}</kbd></h3>
     <s:form action="cardgame" method="post">
         <s:textfield name="choice"></s:textfield>
