@@ -18,6 +18,10 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     private Card nextCard;
     private Deck deck;
 
+    public void print(Object o) {
+        System.out.println(o);
+    }
+
     public String execute() {
         if (!session.containsKey("deck")) {
             session.put("deck", new Deck());
@@ -25,21 +29,28 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         } else {
             deck = (Deck) session.get("deck");
         }
-        currentCard = deck.getNextCard();
+        if (!session.containsKey("currentCard")) {
+            session.put("currentCard", deck.getNextCard());
+            currentCard = (Card) session.get("currentCard");
+        } else {
+            currentCard = (Card) session.get("currentCard");
+        }
         gameTurn();
         return SUCCESS;
     }
 
     public void gameTurn() {
+        nextCard = deck.getNextCard();
+        print("next card: " + nextCard.getValue());
         if (choice != null) {
-            nextCard = deck.getNextCard();
             if (choice.equals("higher") && currentCard.isHigherOrEqual(nextCard)) {
                 correct();
-            } else if (choice.equals("lower") && !currentCard.isHigherOrEqual(nextCard)) {
+            } else if (choice.equals("lower") && !(currentCard.isHigherOrEqual(nextCard))) {
                 correct();
             } else {
                 gameOver();
             }
+            choice = null;
         }
     }
 
@@ -51,8 +62,7 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     }
 
     public void gameOver() {
-        // laat zien wat de volgende card was, wat de score is, en hoeveel kaarten de speler nog over had
-//        System.exit(0);
+        print("game over - score: " + score + " - cards left: " + deck.getCards().size());
     }
 
     public String getChoice() {
