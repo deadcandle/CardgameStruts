@@ -10,10 +10,10 @@
 <body>
     <s:set var="salary" scope="session" value="${2000*2}"/>
     <h1>Kaart: <kbd>${beginKaart}</kbd></h1>
-    <s:form action="cardgame" method="post">
+    <s:form action="cardgameChooseHigher" method="post">
         <s:submit name="higher" value="hoger"></s:submit>
     </s:form>
-    <s:form action="cardgame" method="post">
+    <s:form action="cardgameChooseLower" method="post">
         <s:submit name="lower" value="lager"></s:submit>
     </s:form>
     <c:if test="true">rng is true</c:if>
