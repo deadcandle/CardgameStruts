@@ -9,12 +9,10 @@
 </head>
 <body>
     <h1>Kaart: <kbd>${currentCard}</kbd></h1>
+    <h3>Score: <kbd>${score}</kbd></h3>
     <s:form action="cardgame" method="post">
-        <select>
-            
-        </select>
-        <s:submit name="higher" value="hoger"></s:submit>
-        <s:submit name="lower" value="lager"></s:submit>
+        <s:textfield name="choice"></s:textfield>
+        <s:submit value="formulier indienen"></s:submit>
     </s:form>
     <c:if test="true">rng is true</c:if>
 </body>

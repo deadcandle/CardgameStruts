@@ -12,9 +12,8 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
 
     private Map<String, Object> session;
 
-    private boolean choseHigher;
-
     private int score;
+    private String choice;
     private Card currentCard;
     private Card nextCard;
     private Deck deck;
@@ -28,16 +27,19 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         }
         currentCard = deck.getNextCard();
         gameTurn();
-
         return SUCCESS;
     }
 
     public void gameTurn() {
-        nextCard = deck.getNextCard();
-        if (choseHigher && currentCard.isHigherOrEqual(nextCard)) {
-            correct();
-        } else {
-            gameOver();
+        if (choice != null) {
+            nextCard = deck.getNextCard();
+            if (choice.equals("higher") && currentCard.isHigherOrEqual(nextCard)) {
+                correct();
+            } else if (choice.equals("lower") && !currentCard.isHigherOrEqual(nextCard)) {
+                correct();
+            } else {
+                gameOver();
+            }
         }
     }
 
@@ -50,18 +52,15 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
 
     public void gameOver() {
         // laat zien wat de volgende card was, wat de score is, en hoeveel kaarten de speler nog over had
+//        System.exit(0);
     }
 
-    public String chooseHigher() {
-        choseHigher = true;
-        return SUCCESS;
+    public String getChoice() {
+        return choice;
     }
-
-    public String chooseLower() {
-        choseHigher = false;
-        return SUCCESS;
+    public void setChoice(String choice) {
+        this.choice = choice;
     }
-
     public Map<String, Object> getSession() {
         return session;
     }

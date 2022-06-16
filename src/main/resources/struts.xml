@@ -8,11 +8,5 @@
 		<action name="cardgame" class="prg.WelcomeAction">
 			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 		</action>
-<!--		<action name="cardgameChooseHigher" class="prg.WelcomeAction" method="chooseHigher">-->
-<!--			<result name="success">/WEB-INF/content/cardgame.jsp</result>-->
-<!--		</action>-->
-<!--		<action name="cardgameChooseLower" class="prg.WelcomeAction" method="chooseLower">-->
-<!--			<result name="success">/WEB-INF/content/cardgame.jsp</result>-->
-<!--		</action>-->
 	</package>
 </struts>
