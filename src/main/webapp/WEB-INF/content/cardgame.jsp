@@ -9,7 +9,7 @@
 </head>
 <body>
     <s:set var="salary" scope="session" value="${2000*2}"/>
-    <h1>Kaart: <kbd>${beginKaart}</kbd></h1>
+    <h1>Kaart: <kbd>${currentCard}</kbd></h1>
     <s:form action="cardgame" method="post">
         <s:submit name="higher" value="hoger"></s:submit>
     </s:form>
