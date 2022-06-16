@@ -8,7 +8,6 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-    <s:set var="salary" scope="session" value="${2000*2}"/>
     <h1>Kaart: <kbd>${currentCard}</kbd></h1>
     <s:form action="cardgameChooseHigher" method="post">
         <s:submit name="higher" value="hoger"></s:submit>
