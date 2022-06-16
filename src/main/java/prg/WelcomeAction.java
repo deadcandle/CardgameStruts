@@ -18,10 +18,10 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     private Deck deck;
 
     public String execute() {
-        if (session.containsKey("deck")) {
+        if (!session.containsKey("deck")) {
+            session.put("deck", new Deck());
             deck = (Deck) session.get("deck");
         } else {
-            session.put("deck", new Deck());
             deck = (Deck) session.get("deck");
         }
         gameTurn();
