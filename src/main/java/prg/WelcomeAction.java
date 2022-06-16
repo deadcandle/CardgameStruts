@@ -1,11 +1,14 @@
 package prg;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
 public class WelcomeAction extends ActionSupport implements SessionAware {
+
+    private Map<String, Object> session;
 
     private int score;
     private Card currentCard;
@@ -13,8 +16,9 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     private Deck deck;
 
     public String execute() {
-        if (deck == null) {
-            deck = new Deck();
+        if (!session.containsKey("deck")) {
+            session.put("deck", new Deck());
+            setSession();
         }
         currentCard = deck.getNextCard();
         gameTurn();
