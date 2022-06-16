@@ -14,16 +14,16 @@ public class Deck extends ActionSupport implements SessionAware {
         for (int i = 0; i < 4; i++) {
             for (int j = 2; j <= 10; j++) {
                 switch (i) {
-                    case 0 : {Card c = new Card("Clubs",j +" of Clubs",j); cards.add(c); break;}
-                    case 1 : {Card c = new Card("Diamonds",j+" of Diamonds",j); cards.add(c); break;}
-                    case 2 : {Card c = new Card("Hearts",j+" of Hearts",j); cards.add(c); break;}
-                    case 3 : {Card c = new Card("Spades",j+" of Spades",j); cards.add(c); break;}
+                    case 0 : {Card c = new Card("Schoppen",j+"Schoppen", j); cards.add(c); break;}
+                    case 1 : {Card c = new Card("Ruiten",j+"Ruiten",j); cards.add(c); break;}
+                    case 2 : {Card c = new Card("Harten",j+"Harten",j); cards.add(c); break;}
+                    case 3 : {Card c = new Card("Klaveren",j+"Klaveren",j); cards.add(c); break;}
                 }
             }
-            Card jack = new Card("Jack", "Jack", 10);
-            Card queen = new Card("Queen", "Queen", 11);
-            Card king = new Card("King", "King", 12);
-            Card ace = new Card("Ace", "Ace", 13);
+            Card jack = new Card("Boer", "Boer", 10);
+            Card queen = new Card("Vrouw", "Vrouw", 11);
+            Card king = new Card("Koning", "Koning", 12);
+            Card ace = new Card("Aas", "Aas", 13);
 
             cards.add(jack);
             cards.add(queen);

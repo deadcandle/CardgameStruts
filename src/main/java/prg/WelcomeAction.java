@@ -26,6 +26,7 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         } else {
             deck = (Deck) session.get("deck");
         }
+        currentCard = deck.getNextCard();
         gameTurn();
 
         return SUCCESS;
@@ -34,7 +35,6 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     public void gameTurn() {
         nextCard = deck.getNextCard();
         // laat currentCard zien aan de gebruiker
-        // vraag hoger of lager
         if (choseHigher && currentCard.isHigherOrEqual(nextCard)) {
             correct();
         } else {

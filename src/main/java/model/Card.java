@@ -18,7 +18,7 @@ public class Card extends ActionSupport implements SessionAware {
 
     @Override
     public String toString() {
-        return name;
+        return suit + " " + value;
     }
 
     public boolean isHigherOrEqual(Card c) {
