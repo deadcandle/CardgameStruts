@@ -1,11 +1,14 @@
-package prg;
+package model;
 
-public class Card {
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
+
+import java.util.Map;
+
+public class Card extends ActionSupport implements SessionAware {
     private String suit;
     private String name;
     private int value;
-
-    // test 16/6/22
 
     public Card(String suit, String name, int value) {
         this.suit = suit;
@@ -35,5 +38,10 @@ public class Card {
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+
     }
 }

@@ -1,6 +1,8 @@
 package prg;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.Card;
+import model.Deck;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -16,11 +18,10 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     private Deck deck;
 
     public String execute() {
-        if (!session.containsKey("deck")) {
-            session.put("deck", new Deck());
-            setSession();
+        if (session.containsKey("deck")) {
+            deck = (Deck) session.get("deck");
         }
-        currentCard = deck.getNextCard();
+        session.put("deck", new Deck());
         gameTurn();
 
         return SUCCESS;
@@ -48,34 +49,30 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         // laat zien wat de volgende card was, wat de score is, en hoeveel kaarten de speler nog over had
     }
 
+    public Map<String, Object> getSession() {
+        return session;
+    }
     public int getScore() {
         return score;
     }
-
     public void setScore(int score) {
         this.score = score;
     }
-
     public Card getCurrentCard() {
         return currentCard;
     }
-
     public void setCurrentCard(Card currentCard) {
         this.currentCard = currentCard;
     }
-
     public Card getNextCard() {
         return nextCard;
     }
-
     public void setNextCard(Card nextCard) {
         this.nextCard = nextCard;
     }
-
     public Deck getDeck() {
         return deck;
     }
-
     public void setDeck(Deck deck) {
         this.deck = deck;
     }

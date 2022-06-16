@@ -1,9 +1,13 @@
-package prg;
+package model;
+
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 
-public class Deck {
+public class Deck extends ActionSupport implements SessionAware {
     private ArrayList<Card> cards = new ArrayList<>();
 
     public Deck() {
@@ -37,5 +41,10 @@ public class Deck {
 
     public ArrayList<Card> getCards() {
         return cards;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+
     }
 }
