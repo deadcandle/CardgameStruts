@@ -5,11 +5,14 @@
 <struts>
 	<constant name="struts.devMode" value="true"/>
 	<package name="default" extends="struts-default" namespace="/">
-		<action name="welcome" class="prg.Welcome">
-			<result name="success">/WEB-INF/content/calculator.jsp</result>
+		<action name="cardgame" class="prg.WelcomeAction">
+			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 		</action>
-		<action name="calculator" class="prg.Calculate">
-			<result name="success">/WEB-INF/content/calculator.jsp</result>
+		<action name="cardgameChooseHigher" class="prg.WelcomeAction" method="chooseHigher">
+			<result name="success">/WEB-INF/content/cardgame.jsp</result>
+		</action>
+		<action name="cardgameChooseLower" class="prg.WelcomeAction" method="chooseLower">
+			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 		</action>
 	</package>
 </struts>
