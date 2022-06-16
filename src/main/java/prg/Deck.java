@@ -10,6 +10,7 @@ public class Deck {
         for (int i = 0; i < 4; i++) {
             for (int j = 2; j <= 10; j++) {
                 switch (i) {
+                    // bruh
                     case 0: {Card c = new Card("Clubs",j +" of Clubs",j); cards.add(c); break;}
                     case 1: {Card c = new Card("Diamonds",j+" of Diamonds",j); cards.add(c); break;}
                     case 2: {Card c = new Card("Hearts",j+" of Hearts",j); cards.add(c); break;}
