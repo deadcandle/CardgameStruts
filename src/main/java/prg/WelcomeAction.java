@@ -13,6 +13,8 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
     private boolean choseHigher;
+    private String higher;
+    private String lower;
 
     private int score;
     private Card currentCard;
@@ -20,49 +22,60 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     private Deck deck;
 
     public String execute() {
-        if (!session.containsKey("deck")) {
-            session.put("deck", new Deck());
-            deck = (Deck) session.get("deck");
-        } else {
-            deck = (Deck) session.get("deck");
-        }
-        currentCard = deck.getNextCard();
-        gameTurn();
+        session.putIfAbsent("deck", new Deck());
+        deck = (Deck) session.get("deck");
 
-        return SUCCESS;
-    }
-
-    public void gameTurn() {
+        session.putIfAbsent("currentCard", deck.getNextCard());
+        currentCard = (Card) session.get("currentCard");
         nextCard = deck.getNextCard();
-        // laat currentCard zien aan de gebruiker
         if (choseHigher && currentCard.isHigherOrEqual(nextCard)) {
-            correct();
+            score++;
+            currentCard = nextCard;
+            return SUCCESS;
+        } else if (!choseHigher && !currentCard.isHigherOrEqual(nextCard)) {
+            score++;
+            currentCard = nextCard;
+            return SUCCESS;
         } else {
             gameOver();
+            return ERROR;
         }
-    }
-
-    public void correct() {
-        score++;
-        currentCard = nextCard;
-        // laat currentscore en cardsLeft(int) zien aan de gebruiker
-        gameTurn();
     }
 
     public void gameOver() {
+        System.out.println("je ging dood in een tragisch ongeval");
+        // System.exit(0);
         // laat zien wat de volgende card was, wat de score is, en hoeveel kaarten de speler nog over had
     }
 
     public String chooseHigher() {
         choseHigher = true;
         System.out.println("choose higher");
+        execute();
         return SUCCESS;
     }
 
     public String chooseLower() {
         choseHigher = false;
         System.out.println("choose lower");
+        execute();
         return SUCCESS;
+    }
+
+    public String getHigher() {
+        return higher;
+    }
+
+    public void setHigher(String higher) {
+        this.higher = higher;
+    }
+
+    public String getLower() {
+        return lower;
+    }
+
+    public void setLower(String lower) {
+        this.lower = lower;
     }
 
     public Map<String, Object> getSession() {

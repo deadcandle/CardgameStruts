@@ -10,11 +10,9 @@
 <body>
     <h1>Current card: <kbd>${currentCard}</kbd></h1>
     <h1>Next card: <kbd>${nextCard}</kbd></h1>
-    <s:form action="cardgameChooseHigher" method="post">
-        <s:submit></s:submit>
-    </s:form>
-    <s:form action="cardgameChooseLower" method="post">
-        <s:submit></s:submit>
+    <s:form action="cardgame" method="POST">
+        <button type="submit" value="omhoog" name="higher">higher</button>
+        <button type="submit" value="omlaag" name="lower">lower</button>
     </s:form>
     <c:if test="true">rng is true</c:if>
 </body>
