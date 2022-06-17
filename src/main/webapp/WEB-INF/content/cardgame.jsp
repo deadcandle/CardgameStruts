@@ -10,7 +10,7 @@
 <body style="text-align: center; width: 20%; min-width: 150px; margin: 20px auto">
     <img width="150px" src="https://deckofcardsapi.com/static/img/${currentCard.suit}.png">
     <h1>${currentCard.name}</h1>
-    <p>reserende kaarten: <kbd>${totalCards}</kbd></p>
+    <p>resTerende kaarten: <kbd>${totalCards}</kbd></p>
     <p>totale punten: <kbd>${score}</kbd></p>
     <s:form action="gameturn" method="POST">
         <button style="padding: 5px; margin: 5px;" type="submit" value="omhoog" name="higher">higher</button>
