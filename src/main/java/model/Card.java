@@ -5,8 +5,10 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-public class Card extends ActionSupport implements SessionAware {
-    private String suit;
+public class Card extends ActionSupport {
+
+    private Map<String, Object> session;
+    private String suit; // code, bijvoorbeeld "KS" -> KING SPADES
     private String name;
     private int value;
 
@@ -14,11 +16,6 @@ public class Card extends ActionSupport implements SessionAware {
         this.suit = suit;
         this.name = name;
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return suit + " " + value;
     }
 
     public boolean isHigherOrEqual(Card c) {
@@ -31,17 +28,19 @@ public class Card extends ActionSupport implements SessionAware {
     public String getSuit() {
         return suit;
     }
-
     public void setSuit(String suit) {
         this.suit = suit;
     }
-
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public int getValue() {
         return value;
     }
-
-    @Override
-    public void setSession(Map<String, Object> session) {
-
+    public void setValue(int value) {
+        this.value = value;
     }
 }
