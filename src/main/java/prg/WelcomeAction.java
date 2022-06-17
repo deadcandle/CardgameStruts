@@ -14,6 +14,7 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
     private int totalCards = 50;
 
     public String execute() {
+        session.clear();
         session.putIfAbsent("deck", new Deck());
         session.putIfAbsent("currentCard", ((Deck) session.get("deck")).getNextCard());
         session.putIfAbsent("nextCard", ((Deck) session.get("deck")).getNextCard());
