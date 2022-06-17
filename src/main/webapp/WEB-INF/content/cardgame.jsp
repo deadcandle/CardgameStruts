@@ -13,8 +13,8 @@
     <p>Current score: <kbd>${score}</kbd></p>
     <p>(Next card: <kbd>${nextCard}</kbd>)</p>
     <s:form action="gameturn" method="POST">
-        <button type="submit" value="omhoog" name="higher">higher</button>
-        <button type="submit" value="omlaag" name="lower">lower</button>
+        <button style="padding: 5px; margin: 5px;" type="submit" value="omhoog" name="higher">higher</button>
+        <button style="padding: 5px; margin: 5px;" type="submit" value="omlaag" name="lower">lower</button>
     </s:form>
     <br>
 </body>

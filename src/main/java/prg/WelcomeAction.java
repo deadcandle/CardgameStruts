@@ -11,6 +11,7 @@ import java.util.Map;
 public class WelcomeAction extends ActionSupport implements SessionAware {
 
     private Map<String, Object> session;
+    private int totalCards = 50;
 
     public String execute() {
         session.putIfAbsent("deck", new Deck());
@@ -22,6 +23,12 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
 
     public Map<String, Object> getSession() {
         return session;
+    }
+    public int getTotalCards() {
+        return totalCards;
+    }
+    public void setTotalCards(int totalCards) {
+        this.totalCards = totalCards;
     }
     @Override
     public void setSession(Map<String, Object> session) {
