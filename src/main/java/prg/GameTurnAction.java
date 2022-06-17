@@ -3,6 +3,7 @@ package prg;
 import com.opensymphony.xwork2.ActionSupport;
 import model.Card;
 import model.Deck;
+import model.OpslaanDB;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -18,6 +19,9 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     private Card currentCard;
     private Card nextCard;
 
+    private OpslaanDB db;
+
+
     private int totalCards;
     private int score = 0;
 
@@ -26,7 +30,7 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
         currentCard = (Card) session.get("currentCard");
         nextCard = (Card) session.get("nextCard");
         score = (int) session.get("score");
-
+        db.ophalenScores();
         if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
             session.clear();
             return ERROR;
@@ -95,5 +99,13 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public OpslaanDB getDb() {
+        return db;
+    }
+
+    public void setDb(OpslaanDB db) {
+        this.db = db;
     }
 }
