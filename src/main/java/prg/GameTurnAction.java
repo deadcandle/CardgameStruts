@@ -19,12 +19,30 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     private Card nextCard;
 
     private int totalCards;
+    private int score = 0;
 
     public String execute() {
         deck = (Deck) session.get("deck");
+        currentCard = (Card) session.get("currentCard");
+        nextCard = (Card) session.get("nextCard");
+        score = (int) session.get("score");
+
+        if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
+            session.clear();
+            return ERROR;
+        }
+        if (higher != null && !nextCard.isHigherOrEqual(currentCard)) {
+            session.clear();
+            return ERROR;
+        }
         totalCards = deck.getTotalCards();
-        if (nextCard == null) {
+        {
+            currentCard = nextCard;
             nextCard = deck.getNextCard();
+            score++;
+            session.put("currentCard", currentCard);
+            session.put("nextCard", nextCard);
+            session.put("score", score);
         }
         return SUCCESS;
     }
@@ -67,6 +85,12 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     }
     public void setTotalCards(int totalCards) {
         this.totalCards = totalCards;
+    }
+    public int getScore() {
+        return score;
+    }
+    public void setScore(int score) {
+        this.score = score;
     }
     @Override
     public void setSession(Map<String, Object> session) {

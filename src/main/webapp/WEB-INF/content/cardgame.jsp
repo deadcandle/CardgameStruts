@@ -10,11 +10,12 @@
 <body style="text-align: center">
     <h1>Current card: <kbd>${currentCard}</kbd></h1>
     <p>Total cards left: <kbd>${totalCards}</kbd></p>
+    <p>Current score: <kbd>${score}</kbd></p>
+    <p>(Next card: <kbd>${nextCard}</kbd>)</p>
     <s:form action="gameturn" method="POST">
         <button type="submit" value="omhoog" name="higher">higher</button>
         <button type="submit" value="omlaag" name="lower">lower</button>
     </s:form>
     <br>
-    <i>(next card: ${nextCard})</i>
 </body>
 </html>
