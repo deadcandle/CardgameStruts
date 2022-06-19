@@ -15,7 +15,6 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
 
     private Map<String, Object> session;
 
-    private OpslaanDB opslaanDB;
 
 
     public String execute() {
@@ -23,6 +22,7 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         session.putIfAbsent("currentCard", ((Deck) session.get("deck")).getNextCard());
         session.putIfAbsent("nextCard", ((Deck) session.get("deck")).getNextCard());
         session.putIfAbsent("score", 0);
+        session.putIfAbsent("db", new OpslaanDB());
         return SUCCESS;
     }
 
@@ -34,11 +34,4 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         this.session = session;
     }
 
-    public OpslaanDB getOpslaanDB() {
-        return opslaanDB;
-    }
-
-    public void setOpslaanDB(OpslaanDB opslaanDB) {
-        this.opslaanDB = opslaanDB;
-    }
 }

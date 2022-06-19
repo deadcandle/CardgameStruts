@@ -37,14 +37,17 @@ public class OpslaanDB {
 
     public void opslaanScoren(int score) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CardGame", "root", "MOZs15jS!");
-
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CardGame?characterEncoding=utf8", "root", "MOZs15jS!");
+            String sql = "INSERT INTO playerlist (scoren) VALUES (" + score + ");";
             Statement statement = connection.createStatement();
-            statement.executeQuery("INSERT INTO playerlist (scoren) VALUES (score);");
+            statement.execute(sql);
             System.out.print("ja");
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

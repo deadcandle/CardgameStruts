@@ -41,12 +41,12 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
         score = (int) session.get("score");
         db.ophalenScores();
         if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
-//            db.opslaanScoren(getScore());
+            db.opslaanScoren(score);
             session.clear();
             return ERROR;
         }
         if (higher != null && !nextCard.isHigherOrEqual(currentCard)) {
-//            db.opslaanScoren(getScore());
+            db.opslaanScoren(score);
             session.clear();
             return ERROR;
         }
