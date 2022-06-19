@@ -6,7 +6,15 @@ import model.Deck;
 import model.OpslaanDB;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import java.sql.*;
 import java.util.Map;
 
 public class GameTurnAction extends ActionSupport implements SessionAware {
@@ -21,8 +29,9 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
 
     private OpslaanDB db;
 
-
     private int totalCards;
+
+    private List<Integer> rows = new ArrayList<>();
     private int score = 0;
 
     public String execute() {
@@ -32,10 +41,12 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
         score = (int) session.get("score");
         db.ophalenScores();
         if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
+//            db.opslaanScoren(getScore());
             session.clear();
             return ERROR;
         }
         if (higher != null && !nextCard.isHigherOrEqual(currentCard)) {
+//            db.opslaanScoren(getScore());
             session.clear();
             return ERROR;
         }
@@ -108,4 +119,12 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     public void setDb(OpslaanDB db) {
         this.db = db;
     }
+
+//    public OpslaanDB getDb() {
+//        return db;
+//    }
+//
+//    public void setDb(OpslaanDB db) {
+//        this.db = db;
+//    }
 }
