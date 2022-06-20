@@ -6,7 +6,6 @@ import model.Deck;
 import model.OpslaanDB;
 import org.apache.struts2.interceptor.SessionAware;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,37 +20,24 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     private Card nextCard;
     private OpslaanDB db;
     private int totalCards;
-    private List<Integer> rij = new ArrayList<>();
+    private String naam;
+    private List<List<String>> rij = new ArrayList<List<String>>();
     private int score = 0;
     public String execute() {
         deck = (Deck) session.get("deck");
         currentCard = (Card) session.get("currentCard");
         nextCard = (Card) session.get("nextCard");
         score = (int) session.get("score");
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cardgame?characterEncoding=utf8", "root", "MOZs15jS!");
-
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT scoren FROM playerlist ORDER BY scoren desc LIMIT 10");
-
-// limit niet werkt --> for loop gebruiken met 10 itterations
-            while (resultSet.next()) {
-                rij.add(resultSet.getInt("scoren"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
+        db = (OpslaanDB) session.get("db");
+        rij.clear();
+        rij.add(db.ophalenScores());
         if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
-            opslaanScoren(score);
+            db.opslaanScoren(score, naam);
             session.clear();
             return ERROR;
         }
         if (higher != null && !nextCard.isHigherOrEqual(currentCard)) {
-            opslaanScoren(score);
+            db.opslaanScoren(score, naam);
             session.clear();
             return ERROR;
         }
@@ -67,21 +53,6 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
-    public void opslaanScoren(int score) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CardGame?characterEncoding=utf8", "root", "MOZs15jS!");
-            String sql = "INSERT INTO playerlist (scoren) VALUES (" + score + ");";
-            Statement statement = connection.createStatement();
-            statement.execute(sql);
-            System.out.print("ja");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public Map<String, Object> getSession() {
         return session;
@@ -141,7 +112,15 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
         this.db = db;
     }
 
-    public List<Integer> getRij() {
+    public List<List<String>> getRij() {
         return rij;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
 }

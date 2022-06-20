@@ -24,6 +24,9 @@
                 <br>
             </div>
             <div class="col-md-6">
+                <H1>
+                    top 10 scores:
+                </H1>
                 <kbd>${rij}</kbd>
             </div>
         </div>

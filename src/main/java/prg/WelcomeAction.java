@@ -22,6 +22,7 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         session.putIfAbsent("currentCard", ((Deck) session.get("deck")).getNextCard());
         session.putIfAbsent("nextCard", ((Deck) session.get("deck")).getNextCard());
         session.putIfAbsent("score", 0);
+        session.putIfAbsent("db", new OpslaanDB());
         return SUCCESS;
     }
 

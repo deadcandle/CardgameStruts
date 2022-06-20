@@ -5,11 +5,11 @@
 <struts>
 	<constant name="struts.devMode" value="true"/>
 	<package name="default" extends="struts-default" namespace="/">
-		<action name="kaartSpel" class="prg.WelcomeAction">
+		<action name="cardgame" class="prg.WelcomeAction">
 			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 			<result name="error">/WEB-INF/content/err.jsp</result>
 		</action>
-		<action name="game" class="prg.GameTurnAction">
+		<action name="gameturn" class="prg.GameTurnAction">
 			<result name="success">/WEB-INF/content/cardgame.jsp</result>
 			<result name="error">/WEB-INF/content/gameover.jsp</result>
 		</action>

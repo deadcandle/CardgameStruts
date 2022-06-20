@@ -9,7 +9,7 @@
 </head>
 <body style="color: white; background-color: black;" >
 <h1>game Over</h1>
-<p>Your score was <kbd>${score}</kbd></p>
-<a href="kaartSpel" style="color: orange;">Return to Home</a><br><br><br>
+<p>Your score was <kbd>${score/n}</kbd></p>
+<a href="cardgame" style="color: orange;">Return to Home</a><br><br><br>
 </body>
 </html>

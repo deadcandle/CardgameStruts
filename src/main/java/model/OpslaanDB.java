@@ -10,21 +10,20 @@ import java.util.List;
 
 public class OpslaanDB {
 
-    private List<Integer> rows = new ArrayList<>();
+    private List<String> rows = new ArrayList<>();
 
 
-    public List<Integer> ophalenScores() {
+    public List<String> ophalenScores() {
+        rows.clear();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/cardgame?characterEncoding=utf8","root","MOZs15jS!");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cardgame?characterEncoding=utf8", "root", "MOZs15jS!");
 
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT scoren FROM playerlist ORDER BY scoren desc LIMIT 10");
+            ResultSet resultSet = statement.executeQuery("SELECT scoren, naam FROM playerlist ORDER BY scoren desc LIMIT 10");
 
-            System.out.println(resultSet);
-// limit niet werkt --> for loop gebruiken met 10 itterations
             while (resultSet.next()) {
-                rows.add(resultSet.getInt("scoren"));
+                rows.add(resultSet.getInt("scoren") + " "+resultSet.getString("naam"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -34,14 +33,13 @@ public class OpslaanDB {
         return rows;
     }
 
-    public void opslaanScoren(int score) {
+    public void opslaanScoren(int score, String naam) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CardGame?characterEncoding=utf8", "root", "MOZs15jS!");
-            String sql = "INSERT INTO playerlist (scoren) VALUES (" + score + ");";
+            String sql = "INSERT INTO playerlist (scoren, naam) VALUES (" + score + naam +");";
             Statement statement = connection.createStatement();
             statement.execute(sql);
-            System.out.print("ja");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,12 +48,4 @@ public class OpslaanDB {
         }
     }
 
-
-    public List<Integer> getRows() {
-        return rows;
-    }
-
-    public void setRows(List<Integer> rows) {
-        this.rows = rows;
-    }
 }

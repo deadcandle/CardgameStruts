@@ -12,6 +12,6 @@
 </head>
 <body style="color: white; background-color:black;">
 <h1>oops er ging iets mis!</h1>
-<a href="kaartSpel" style="color: orange;">Return to Home</a><br><br><br>
+<a href="cardgame" style="color: orange;">Return to Home</a><br><br><br>
 </body>
 </html>
