@@ -12,7 +12,6 @@ public class Deck extends ActionSupport {
     private int totalCards;
     private ArrayList<Card> cards = new ArrayList<>();
 
-    // blijkbaar gebruikt de API 0 als 10, dus 0D is ruiten 10
     public Deck() {
         for (int i = 0; i < 4; i++) {
             for (int j = 2; j <= 10; j++) {

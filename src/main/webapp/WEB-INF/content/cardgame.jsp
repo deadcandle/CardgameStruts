@@ -16,7 +16,7 @@
         <button style="padding: 5px; margin: 5px;" type="submit" value="omhoog" name="higher">higher</button>
         <button style="padding: 5px; margin: 5px;" type="submit" value="omlaag" name="lower">lower</button>
     </s:form>
-    <button style="padding: 5px; margin: 5px;" onclick="alert('De volgende kaart is ${nextCard.name}')">Volgende kaart</button>
+<%--    <button style="padding: 5px; margin: 5px;" onclick="alert('De volgende kaart is ${nextCard.name}')">Volgende kaart</button>--%>
     <br>
 </body>
 </html>
