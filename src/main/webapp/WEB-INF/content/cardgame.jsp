@@ -10,13 +10,13 @@
 <body style="text-align: center; width: 20%; min-width: 150px; margin: 20px auto">
     <img width="150px" src="https://deckofcardsapi.com/static/img/${currentCard.suit}.png">
     <h1>${currentCard.name}</h1>
-    <p>resTerende kaarten: <kbd>${totalCards}</kbd></p>
-    <p>totale punten: <kbd>${score}</kbd></p>
+    <p>Resterende kaarten: <kbd>${totalCards}</kbd></p>
+    <p>Totale punten: <kbd>${score}</kbd></p>
     <s:form action="gameturn" method="POST">
         <button style="padding: 5px; margin: 5px;" type="submit" value="omhoog" name="higher">higher</button>
         <button style="padding: 5px; margin: 5px;" type="submit" value="omlaag" name="lower">lower</button>
     </s:form>
-    <button style="padding: 5px; margin: 5px;" onclick="alert('De volgende kaart is ${nextCard.name}')">ik heb hulp nodig</button>
+    <button style="padding: 5px; margin: 5px;" onclick="alert('De volgende kaart is ${nextCard.name}')">Volgende kaart</button>
     <br>
 </body>
 </html>
