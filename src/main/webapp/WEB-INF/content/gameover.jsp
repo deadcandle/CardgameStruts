@@ -7,10 +7,9 @@
     <%@ taglib prefix="s" uri="/struts-tags"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
-<body style="text-align: center">
-<h1>You lost ):</h1>
+<body style="color: white; background-color: black;" >
+<h1>game Over</h1>
 <p>Your score was <kbd>${score}</kbd></p>
-<a href="cardgame">Return to Home</a><br><br><br>
-<img src='https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Trollface_non-free.png/220px-Trollface_non-free.png'>
+<a href="kaartSpel" style="color: orange;">Return to Home</a><br><br><br>
 </body>
 </html>

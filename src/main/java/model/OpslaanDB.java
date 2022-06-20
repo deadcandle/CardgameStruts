@@ -12,10 +12,9 @@ public class OpslaanDB {
 
     private List<Integer> rows = new ArrayList<>();
 
-// kan niet method in
+
     public List<Integer> ophalenScores() {
         try {
-
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/cardgame?characterEncoding=utf8","root","MOZs15jS!");
 
