@@ -42,7 +42,15 @@
 			<version>1.2</version>
 		</dependency>
 
+<<<<<<< Updated upstream
 
+=======
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.29</version>
+		</dependency>
+>>>>>>> Stashed changes
 
 	</dependencies>
 
@@ -67,6 +75,8 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.2</version>
 			</plugin>
+
+
 		</plugins>
 	</build>
 </project>
