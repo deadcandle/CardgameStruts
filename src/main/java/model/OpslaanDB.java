@@ -17,7 +17,7 @@ public class OpslaanDB {
         rows.clear();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cardgame?characterEncoding=utf8", "root", "MOZs15jS!");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cardgame?characterEncoding=utf8", "root", "123456");
 
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT scoren, naam FROM playerlist ORDER BY scoren desc LIMIT 10");
