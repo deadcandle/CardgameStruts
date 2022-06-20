@@ -3,9 +3,11 @@ package prg;
 import com.opensymphony.xwork2.ActionSupport;
 import model.Card;
 import model.Deck;
-import org.apache.struts2.dispatcher.SessionMap;
+import model.OpslaanDB;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class GameTurnAction extends ActionSupport implements SessionAware {
@@ -13,25 +15,29 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
     private String higher;
     private String lower;
-
     private Deck deck;
     private Card currentCard;
     private Card nextCard;
-
+    private OpslaanDB db;
     private int totalCards;
+    private String naam;
+    private List<List<String>> rij = new ArrayList<List<String>>();
     private int score = 0;
-
     public String execute() {
         deck = (Deck) session.get("deck");
         currentCard = (Card) session.get("currentCard");
         nextCard = (Card) session.get("nextCard");
         score = (int) session.get("score");
-
+        db = (OpslaanDB) session.get("db");
+        rij.clear();
+        rij.add(db.ophalenScores());
         if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
+            db.opslaanScoren(score, naam);
             session.clear();
             return ERROR;
         }
         if (higher != null && !nextCard.isHigherOrEqual(currentCard)) {
+            db.opslaanScoren(score, naam);
             session.clear();
             return ERROR;
         }
@@ -46,6 +52,7 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
         }
         return SUCCESS;
     }
+
 
     public Map<String, Object> getSession() {
         return session;
@@ -95,5 +102,25 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public OpslaanDB getDb() {
+        return db;
+    }
+
+    public void setDb(OpslaanDB db) {
+        this.db = db;
+    }
+
+    public List<List<String>> getRij() {
+        return rij;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
 }
