@@ -14,12 +14,13 @@ import java.util.List;
 
 
 public class Db_connectie {
-    private ArrayList<String> rows = new ArrayList<>();
+    private ArrayList<String> rows;
     private LocalDate date;
     GameTurnAction gta;
 
 
     public List<String> ophalenScores() {
+        rows = new ArrayList<>();
         rows.clear();
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -39,6 +40,7 @@ public class Db_connectie {
         return rows;
     }
 
+
     public void opslaanScoren(int score) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -56,6 +58,13 @@ public class Db_connectie {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+    public ArrayList<String> getRows() {
+        return rows;
+    }
+
+    public void setRows(ArrayList<String> rows) {
+        this.rows = rows;
     }
 
 }

@@ -9,7 +9,7 @@
 </head>
 <body style="text-align: center">
 <h1>Game over!</h1>
-<p>Je score was: <kbd>${score}</kbd></p>
-<a href="cardgame">Speel opnieuw</a><br><br><br>
+<p>your score was: <kbd>${score}</kbd></p>
+<a href="cardgame">play again</a><br><br><br>
 </body>
 </html>

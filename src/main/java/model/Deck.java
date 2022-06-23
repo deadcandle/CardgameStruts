@@ -17,32 +17,32 @@ public class Deck extends ActionSupport {
         for (int i = 0; i < 4; i++) {
             for (int j = 2; j <= 10; j++) {
                 switch (i) {
-                    case 0 : {Card c = new Card(j+"S","Schoppen "+j,j); cards.add(c); break;}
-                    case 1 : {Card c = new Card(j+"D","Ruiten "+j,j); cards.add(c); break;}
-                    case 2 : {Card c = new Card(j+"H","Harten "+j,j); cards.add(c); break;}
-                    case 3 : {Card c = new Card(j+"C","Klaveren "+j,j); cards.add(c); break;}
+                    case 0 : {Card c = new Card(j+"S","ace "+j,j); cards.add(c); break;}
+                    case 1 : {Card c = new Card(j+"D","spade "+j,j); cards.add(c); break;}
+                    case 2 : {Card c = new Card(j+"H","diamonds "+j,j); cards.add(c); break;}
+                    case 3 : {Card c = new Card(j+"C","clover "+j,j); cards.add(c); break;}
                 }
             }
         }
-        {Card c = new Card("AH","Harten aas",14); cards.add(c);}
+        {Card c = new Card("AH","ace of hearts",14); cards.add(c);}
         {Card c = new Card("KH","Harten koning",13); cards.add(c);}
         {Card c = new Card("QH","Harten koningin",12); cards.add(c);}
         {Card c = new Card("JH","Harten boer",11); cards.add(c);}
 
-        {Card c = new Card("AS","Schoppen aas",14); cards.add(c);}
-        {Card c = new Card("KS","Schoppen koning",13); cards.add(c);}
-        {Card c = new Card("QS","Schoppen koningin",12); cards.add(c);}
-        {Card c = new Card("JS","Schoppen boer",11); cards.add(c);}
+        {Card c = new Card("AS","ace of spades",14); cards.add(c);}
+        {Card c = new Card("KS","king of spades",13); cards.add(c);}
+        {Card c = new Card("QS","queen of spades",12); cards.add(c);}
+        {Card c = new Card("JS","jack of spades",11); cards.add(c);}
 
-        {Card c = new Card("AD","Ruiten aas",14); cards.add(c);}
-        {Card c = new Card("KD","Ruiten koning",13); cards.add(c);}
-        {Card c = new Card("QD","Ruiten koningin",12); cards.add(c);}
-        {Card c = new Card("JD","Ruiten boer",11); cards.add(c);}
+        {Card c = new Card("AD","ace of diamond",14); cards.add(c);}
+        {Card c = new Card("KD","king of diamonds",13); cards.add(c);}
+        {Card c = new Card("QD","queen of diamonds",12); cards.add(c);}
+        {Card c = new Card("JD","jack of diamonds",11); cards.add(c);}
 
-        {Card c = new Card("AC","Klaver aas",14); cards.add(c);}
-        {Card c = new Card("KC","Klaver koning",13); cards.add(c);}
-        {Card c = new Card("QC","Klaver koningin",12); cards.add(c);}
-        {Card c = new Card("JC","Klaver boer",11); cards.add(c);}
+        {Card c = new Card("AC","ace of clovers",14); cards.add(c);}
+        {Card c = new Card("KC","king of clovers",13); cards.add(c);}
+        {Card c = new Card("QC","queen of clovers",12); cards.add(c);}
+        {Card c = new Card("JC","jack fo clovers",11); cards.add(c);}
 
         Collections.shuffle(cards);
         totalCards = cards.size();

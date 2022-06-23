@@ -7,6 +7,7 @@ import model.Deck;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class GameTurnAction extends ActionSupport implements SessionAware {
@@ -33,8 +34,9 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
         nextCard = (Card) session.get("nextCard");
         score = (int) session.get("score");
         db = (Db_connectie) session.get("db");
+        db.ophalenScores();
+        rij.add(db.getRows());
 
-        rij.add((ArrayList<String>) db.ophalenScores());
         if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
             db.opslaanScoren(getScore());
             session.clear();
