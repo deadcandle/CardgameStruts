@@ -2,6 +2,7 @@ package prg;
 
 import com.opensymphony.xwork2.ActionSupport;
 import model.Card;
+import model.Db_connectie;
 import model.Deck;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -19,6 +20,7 @@ public class WelcomeAction extends ActionSupport implements SessionAware {
         session.putIfAbsent("currentCard", ((Deck) session.get("deck")).getNextCard());
         session.putIfAbsent("nextCard", ((Deck) session.get("deck")).getNextCard());
         session.putIfAbsent("score", 0);
+        session.putIfAbsent("db", new Db_connectie());
         return SUCCESS;
     }
 

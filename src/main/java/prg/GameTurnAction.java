@@ -2,10 +2,11 @@ package prg;
 
 import com.opensymphony.xwork2.ActionSupport;
 import model.Card;
+import model.Db_connectie;
 import model.Deck;
-import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class GameTurnAction extends ActionSupport implements SessionAware {
@@ -21,17 +22,26 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     private int totalCards;
     private int score = 0;
 
+    private Db_connectie db = new Db_connectie();
+
+    private ArrayList<ArrayList<String>> rij = new ArrayList<ArrayList<String>>();
+
+
     public String execute() {
         deck = (Deck) session.get("deck");
         currentCard = (Card) session.get("currentCard");
         nextCard = (Card) session.get("nextCard");
         score = (int) session.get("score");
+        db = (Db_connectie) session.get("db");
 
+        rij.add((ArrayList<String>) db.ophalenScores());
         if (lower != null && nextCard.isHigherOrEqual(currentCard)) {
+            db.opslaanScoren(getScore());
             session.clear();
             return ERROR;
         }
         if (higher != null && !nextCard.isHigherOrEqual(currentCard)) {
+            db.opslaanScoren(getScore());
             session.clear();
             return ERROR;
         }
@@ -95,5 +105,12 @@ public class GameTurnAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+    public ArrayList<ArrayList<String>> getRij() {
+        return rij;
+    }
+
+    public void setRij(ArrayList<ArrayList<String>> rij) {
+        this.rij = rij;
     }
 }
